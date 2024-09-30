@@ -1,6 +1,11 @@
 package com.example.controlesconfuncionalidad
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +20,24 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        val miTag = "Antonio"
+        val ptNombre = findViewById<EditText>(R.id.ptNombre)
+        val btAceptar = findViewById<Button>(R.id.btAceptar)
+        val btBorrar = findViewById<Button>(R.id.btBorrar)
+
+        btAceptar.setOnClickListener {
+
+            Log.i(miTag,"Hola ${ptNombre.text}")
+            Toast.makeText(this, "Hola ${ptNombre.text}", Toast.LENGTH_LONG).show()
+
+            /*val snackbar = androidx.compose.material3.Snackbar.make(view, "Message with icon",
+                androidx.compose.material3.Snackbar.LENGTH_LONG)
+            snackbar.setIcon(R.drawable.my_icon)
+            snackbar.show()*/
+        }
+        btBorrar.setOnClickListener {
+            ptNombre.text.clear()
         }
     }
 }
