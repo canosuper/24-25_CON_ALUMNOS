@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BindingImagesSeekRbSwitch</string>
+    <string name="nombre">Nombre:</string>
+    <string name="hintNombre">Introduce nombre...</string>
+</resources>
