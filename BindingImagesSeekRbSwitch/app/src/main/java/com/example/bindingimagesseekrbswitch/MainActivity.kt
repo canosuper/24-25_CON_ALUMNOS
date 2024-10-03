@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.bindingimagesseekrbswitch.R
 import com.example.bindingimagesseekrbswitch.databinding.ActivityMainBinding
+import modelo.PedidoPizzeria
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -27,16 +28,75 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        //variables locales
         val miTag = "Antonio"
+        var currentImage = R.mipmap.ic_comida
+        val image1 = R.mipmap.ic_comida
+        val image2 = R.drawable.ic_pizza
 
         binding.btAceptar.setOnClickListener {
 
-            Log.i(miTag,"Hola ${binding.ptNombre.text}")
-            Toast.makeText(this, "Hola ${binding.ptNombre.text}", Toast.LENGTH_LONG).show()
+            var mensaje =""
+            val nombre = binding.ptNombre.text?.toString() ?: "" // Provide a default value if null
+
+            if(binding.swLicencia.isChecked){
+
+                var pide=false
+                mensaje = "Hola $nombre, has pedido una pizza con "
+                if(binding.chQueso.isChecked){
+                    mensaje += "Queso "
+                    pide=true
+                }
+                if(binding.chCebolla.isChecked){
+                    mensaje += "Cebolla "
+                    pide=true
+                }
+                if(binding.chBacon.isChecked){
+                    mensaje += "Bacon "
+                    pide=true
+                }
+                if(!pide){
+                    mensaje += "ningun ingrediente "
+                }
+                if(binding.rdFino.isChecked){
+                    mensaje += "y de borde fino"
+                }
+                if(binding.rdGordo.isChecked){
+                    mensaje += "y de borde ancho"
+                }
+                val pedido = PedidoPizzeria(nombre, binding.chQueso.isChecked, binding.chBacon.isChecked,
+                    binding.chCebolla.isChecked, binding.rdFino.isChecked,binding.rdGordo.isChecked)
+                Log.i(miTag, pedido.toString())
+            }else{
+                mensaje = "Debes aceptar la licencia"
+            }
+
+            Log.i(miTag,mensaje)
+            Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
+
 
         }
         binding.btBorrar.setOnClickListener {
             binding.ptNombre.text.clear()
+            binding.swLicencia.isChecked=false
+            binding.chQueso.isChecked=false
+            binding.chCebolla.isChecked=false
+            binding.chBacon.isChecked=false
+            binding.rdFino.isChecked=true
+            binding.rdGordo.isChecked=false
+        }
+        binding.ibPlay.setOnClickListener {
+            if (currentImage == image1) {
+                binding.ivPrincipal.setImageResource(image2)
+                currentImage = image2
+            } else {
+                binding.ivPrincipal.setImageResource(image1)
+                currentImage = image1
+            }
+        }
+
+        binding.ivPrincipal.setOnClickListener {
+            binding.ivPrincipal.setImageResource(R.drawable.pizza)
         }
     }
 }
