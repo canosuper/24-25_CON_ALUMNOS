@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -65,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                     mensaje += "y de borde ancho"
                 }
                 val pedido = PedidoPizzeria(nombre, binding.chQueso.isChecked, binding.chBacon.isChecked,
-                    binding.chCebolla.isChecked, binding.rdFino.isChecked,binding.rdGordo.isChecked)
+                    binding.chCebolla.isChecked, binding.rdFino.isChecked,binding.rdGordo.isChecked, binding.sbSatisfaccion.progress)
                 Log.i(miTag, pedido.toString())
             }else{
                 mensaje = "Debes aceptar la licencia"
@@ -84,6 +85,7 @@ class MainActivity : AppCompatActivity() {
             binding.chBacon.isChecked=false
             binding.rdFino.isChecked=true
             binding.rdGordo.isChecked=false
+            binding.sbSatisfaccion.progress=0
         }
         binding.ibPlay.setOnClickListener {
             if (currentImage == image1) {
@@ -98,5 +100,23 @@ class MainActivity : AppCompatActivity() {
         binding.ivPrincipal.setOnClickListener {
             binding.ivPrincipal.setImageResource(R.drawable.pizza)
         }
+
+        binding.sbSatisfaccion.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                // Called when the progress level has changed.
+                // Use the progress value here (ranges from 0 to max value)
+                Log.i(miTag, "Progress: $progress")
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                // Called when the user starts changing the progress value.
+                Log.i(miTag, "Start tracking ${binding.sbSatisfaccion.progress}")
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // Called when the user stops changing the progress value.
+                Log.i(miTag, "Stop tracking ${binding.sbSatisfaccion.progress}")
+            }
+        })
     }
 }

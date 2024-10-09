@@ -6,5 +6,6 @@ data class PedidoPizzeria(
     val bacon: Boolean,
     val cebolla: Boolean,
     val bordeFino: Boolean,
-    val bordeGordo: Boolean
+    val bordeGordo: Boolean,
+    val satisfaccion:Int
 )
