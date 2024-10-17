@@ -5,33 +5,36 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#90CA4D"
+    android:background="@drawable/fondo_cielo_estrellado"
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPlanetas"
-        android:layout_width="321dp"
-        android:layout_height="507dp"
+        android:layout_width="286dp"
+        android:layout_height="389dp"
+        android:background="@drawable/esquinas_redondas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.301" />
 
     <TextView
         android:id="@+id/txPlanetas"
         android:layout_width="216dp"
         android:layout_height="34dp"
         android:layout_marginBottom="600dp"
-        android:background="#90CA4D"
-        android:text="Lista de planetas:"
+        android:text="Sistema Solar"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.567" />
+        app:layout_constraintVertical_bias="0.443" />
 
     <Button
         android:id="@+id/btDetalle"
@@ -41,10 +44,8 @@
         android:background="#DB6B6B"
         android:text="Detalle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/rvPlanetas"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintVertical_bias="0.726" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

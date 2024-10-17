@@ -16,8 +16,7 @@ import modelo.Planet
 
 import kotlin.text.lowercase
 
-class PlanetAdapter(private val planets: MutableList<Planet>) :
-    RecyclerView.Adapter<PlanetAdapter.PlanetViewHolder>() {
+class PlanetAdapter(private val planets: MutableList<Planet>) : RecyclerView.Adapter<PlanetAdapter.PlanetViewHolder>() {
     private val selectedItems = mutableSetOf<Int>()
     inner class PlanetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameTextView: TextView = itemView.findViewById(R.id.planetName)
@@ -36,7 +35,7 @@ class PlanetAdapter(private val planets: MutableList<Planet>) :
     override fun onBindViewHolder(holder: PlanetViewHolder, position: Int) {
 
 
-        holder.planetaImageView.setImageResource( R.drawable.saturno)
+
         val planet = planets[position]
         holder.nameTextView.text = planet.name
         holder.sizeTextView.text = "Size: ${planet.sizeKm} km"
