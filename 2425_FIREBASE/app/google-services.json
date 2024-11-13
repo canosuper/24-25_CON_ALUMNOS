@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1004759891748",
+    "project_id": "fir-dam2t",
+    "storage_bucket": "fir-dam2t.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004759891748:android:cd88db779d82cbf0637db1",
+        "android_client_info": {
+          "package_name": "com.example.a2425_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1004759891748-h2b1ops0q61c380iojc55ct621llec8n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.a2425_firebase",
+            "certificate_hash": "872c278f048171212c28125320a653f2bc15a093"
+          }
+        },
+        {
+          "client_id": "1004759891748-niamt09b4l99vna5m4fnhuiioslg7ti8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH2_fuRmpX1fi-3ieLAZ8TaYSihosfCLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1004759891748-niamt09b4l99vna5m4fnhuiioslg7ti8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
