@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var firebaseauth : FirebaseAuth
     //en esta variable llevamos el binding con el layout.
     private lateinit var binding: ActivityMainBinding
-    //
+    //esta variable me conecta con  google y me permite hacer el login.
     private lateinit var googleSignInClient: GoogleSignInClient
 
     val TAG = "ACSCO"
