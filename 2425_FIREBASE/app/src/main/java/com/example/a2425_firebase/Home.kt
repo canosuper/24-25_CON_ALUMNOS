@@ -1,7 +1,9 @@
 package com.example.a2425_firebase
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +25,10 @@ import kotlinx.coroutines.tasks.await
 import java.util.Random
 
 
+import android.view.MenuInflater
+import android.view.MenuItem
+
+
 class Home : AppCompatActivity() {
     /**************************DATOS DE PRUEBA ******************************************************************/
     var miArray:ArrayList<User> = ArrayList()  //Este será el arrayList que se usará para el adapter del RecyclerView o de la ListView.
@@ -36,12 +42,59 @@ class Home : AppCompatActivity() {
     val TAG = "ACSCO"
     val db = Firebase.firestore
 
+    //infla el menu
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    // Maneja los clics en el menú
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                // Lleva a otra actividad (simulado)
+                finish()
+               // val intent = Intent(this, MainActivity::class.java)
+                //startActivity(intent)
+                true
+            }
+            R.id.action_camera -> {
+                Toast.makeText(this, "Cámara seleccionada", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_gallery -> {
+                Toast.makeText(this, "Galería seleccionada", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_settings -> {
+                Toast.makeText(this, "Configuración seleccionada", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_help -> {
+                Toast.makeText(this, "Ayuda seleccionada", Toast.LENGTH_SHORT).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         //setContentView(R.layout.activity_home)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // Configura el Toolbar
+        val toolbar = binding.toolbar2
+        setSupportActionBar(toolbar)
+        // Establece un título personalizado
+        supportActionBar?.title = "Home"
+
+        // Agregar un ícono como logo
+        supportActionBar?.setLogo(R.drawable.ic_my_logo)
+        supportActionBar?.setDisplayUseLogoEnabled(true)
+
+        // Habilita la flecha de retroceso
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         //Para la autenticación, de cualquier tipo.
         firebaseauth = FirebaseAuth.getInstance()
@@ -55,6 +108,7 @@ class Home : AppCompatActivity() {
         binding.txtEmail.text = intent.getStringExtra("email").toString()
         binding.txtProveedor.text = intent.getStringExtra("provider").toString()
         binding.txtNombre.text = intent.getStringExtra("nombre").toString()
+
 
         binding.btCerrarSesion.setOnClickListener {
             Log.e(TAG, firebaseauth.currentUser.toString())
