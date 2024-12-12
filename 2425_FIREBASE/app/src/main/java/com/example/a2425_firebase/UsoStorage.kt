@@ -41,17 +41,17 @@ class UsoStorage : AppCompatActivity() {
             insets
         }
 
-        // imagesRef now points to "images"
+        // imagesRef now points to "paisajes"
         var imagesRef: StorageReference? = storageRef.child("paisajes")
 
         // Child references can also take paths
-        // spaceRef now points to "images/space.jpg
-        // imagesRef still points to "images"
+        // spaceRef now points to "paisajes/pai1.jpg
+        // imagesRef still points to "paisajes"
         var spaceRef = storageRef.child("paisajes/pai1.jpg")
 
 
         // parent allows us to move our reference to a parent node
-        // imagesRef now points to 'images'
+        // imagesRef now points to 'paisajes'
         imagesRef = spaceRef.parent
         Log.e(TAG, imagesRef!!.path.toString())
 
@@ -60,13 +60,11 @@ class UsoStorage : AppCompatActivity() {
         val rootRef = spaceRef.root
         Log.e(TAG, rootRef.path.toString())
 
-
-
-        // File path is "images/spock.jpg"
+        // File path is "paisajes/pai1.jpg"
         val path = spaceRef.path
         Log.e(TAG, path.toString())
 
-        // File name is "spock.jpg"
+        // File name is "pai1.jpg"
         val name = spaceRef.name
         Log.e(TAG, name.toString())
 
@@ -123,10 +121,10 @@ class UsoStorage : AppCompatActivity() {
             val Folder: StorageReference =
                 FirebaseStorage.getInstance().getReference().child("paisajes")
 //            val file_name: StorageReference = Folder.child("" + uri!!.lastPathSegment) //<-- Podemos coger el último segmento de toda la ruta como nombre.
-            val file_name: StorageReference = Folder.child("Otronombre")  //<-- Podemos poner el nombre que queramos.
+            val file_name: StorageReference = Folder.child("otronombre")  //<-- Podemos poner el nombre que queramos.
             file_name.putFile(uri).addOnSuccessListener { taskSnapshot ->
                 file_name.getDownloadUrl().addOnSuccessListener { uri ->
-                    Toast.makeText(this,"Imagen ${uri.toString()} subida correctamente", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"Imagen subida correctamente ${uri.toString()}", Toast.LENGTH_SHORT).show()
                 }
             }
         } else {
